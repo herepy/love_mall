@@ -1,0 +1,27 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 80
+
+Mysql:
+  Host: 10.90.10.222
+  Port: 3306
+  User: root
+  Pwd: root
+  Db: love_mall
+
+Redis:
+  Host: "10.90.10.222:6379"
+  Type: "node"
+  Pass: ""
+  Tls:  false
+
+Wechat:
+  Appid: wx13f1f2d96753cbcf
+  Secret: 30ffae485eeba2c1340397f6540b78ad
+
+Auth:
+  AccessSecret: test8888
+  AccessExpire: 7200
+
+Middlewares:
+  Log: false

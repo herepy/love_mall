@@ -1,0 +1,69 @@
+syntax = "v1"
+
+type SendCodeRequest {
+	Phone string `json:"phone"`
+}
+
+type WxLoginRequest {
+	Code string `json:"code"`
+}
+
+type PhoneLoginRequest {
+	Phone string `json:"phone"`
+	Code  string `json:"code"`
+	Key   string `json:"key"`
+}
+
+type EditUserInfoRequest {
+	UserId   int64  `json:"-"`
+	Nickname string `json:"nickname"`
+	Avatar   string `json:"avatar"`
+	Gender   int    `json:"gender"`
+	Province string `json:"province"`
+	City     string `json:"city"`
+}
+
+type SendCodeResponse {
+	Key string `json:"key"`
+}
+
+type LoginResponse {
+	UserInfo UserInfoResponse `json:"userInfo"`
+	Token    string           `json:"token"`
+}
+
+type UserInfoResponse {
+	Id       int64  `json:"id"`
+	Nickname string `json:"nickname"`
+	Avatar   string `json:"avatar"`
+	Gender   int    `json:"gender"`
+	Phone    string `json:"phone"`
+	Province string `json:"province"`
+	City     string `json:"city"`
+}
+
+@server (
+	prefix: /user
+)
+service user-api {
+	@handler SendCode
+	post /sms/code (SendCodeRequest) returns (SendCodeResponse)
+
+	@handler WxLogin
+	post /login/wx (WxLoginRequest) returns (LoginResponse)
+
+	@handler PhoneLogin
+	post /login/phone (PhoneLoginRequest) returns (LoginResponse)
+}
+
+@server (
+	prefix: /user
+	jwt: Auth
+)
+service user-api {
+	@handler UserInfo
+	get /info returns (UserInfoResponse)
+
+	@handler EditInfo
+	post /edit (EditUserInfoRequest) returns (UserInfoResponse)
+}
