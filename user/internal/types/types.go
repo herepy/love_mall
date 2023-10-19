@@ -36,6 +36,22 @@ type AddAddressRequest struct {
 	Default  bool   `json:"default"`
 }
 
+type AddressItem struct {
+	UserId   int64  `json:"userId"`
+	PostCode string `json:"postCode"`
+	Name     string `json:"name"`
+	Phone    string `json:"phone"`
+	Province string `json:"province"`
+	City     string `json:"city"`
+	District string `json:"district"`
+	Address  string `json:"address"`
+	Default  bool   `json:"default"`
+}
+
+type AddressListResponse struct {
+	List []AddressItem `json:"list"`
+}
+
 type SendCodeResponse struct {
 	Key string `json:"key"`
 }

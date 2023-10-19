@@ -48,6 +48,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/address/add",
 				Handler: AddAddressHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/address/list",
+				Handler: AddressListHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/user"),

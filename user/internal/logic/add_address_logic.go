@@ -34,6 +34,7 @@ func (l *AddAddressLogic) AddAddress(req *types.AddAddressRequest) error {
 		Province: req.Province,
 		City:     req.City,
 		District: req.District,
+		Address:  req.Address,
 		Default:  req.Default,
 		Status:   model.StatusOk,
 	}

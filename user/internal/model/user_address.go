@@ -6,8 +6,8 @@
 
 package model
 
-const StatusOk = 0
-const StatusDel = 1
+const StatusOk uint8 = 0
+const StatusDel uint8 = 1
 
 type UserAddress struct {
 	Id         int64  `json:"id" gorm:"column:id"`
@@ -20,8 +20,8 @@ type UserAddress struct {
 	District   string `json:"district" gorm:"column:district"`
 	Address    string `json:"address" gorm:"column:address"`
 	Default    bool   `json:"default" gorm:"column:default"`
-	CreateTime int64  `json:"createTime" gorm:"column:create_time"`
-	Status     uint8  `json:"status" gorm:"autoCreateTime;column:status"`
+	CreateTime int64  `json:"createTime" gorm:"autoCreateTime;column:create_time"`
+	Status     uint8  `json:"status" gorm:"column:status"`
 }
 
 func (ua *UserAddress) TableName() string {

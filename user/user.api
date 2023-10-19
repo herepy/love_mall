@@ -23,6 +23,34 @@ type EditUserInfoRequest {
 	City     string `json:"city"`
 }
 
+type AddAddressRequest {
+	UserId   int64  `json:"-"`
+	PostCode string `json:"postCode"`
+	Name     string `json:"name"`
+	Phone    string `json:"phone"`
+	Province string `json:"province"`
+	City     string `json:"city"`
+	District string `json:"district"`
+	Address  string `json:"address"`
+	Default  bool   `json:"default"`
+}
+
+type AddressItem {
+	UserId   int64  `json:"userId"`
+	PostCode string `json:"postCode"`
+	Name     string `json:"name"`
+	Phone    string `json:"phone"`
+	Province string `json:"province"`
+	City     string `json:"city"`
+	District string `json:"district"`
+	Address  string `json:"address"`
+	Default  bool   `json:"default"`
+}
+
+type AddressListResponse {
+	List []AddressItem `json:"list"`
+}
+
 type SendCodeResponse {
 	Key string `json:"key"`
 }
@@ -66,4 +94,10 @@ service user-api {
 
 	@handler EditInfo
 	post /edit (EditUserInfoRequest) returns (UserInfoResponse)
+
+	@handler AddAddress
+	post /address/add (AddAddressRequest)
+
+	@handler AddressList
+	get /address/list returns (AddressListResponse)
 }
