@@ -42,6 +42,7 @@ type DelAddressRequest struct {
 }
 
 type AddressItem struct {
+	Id       int64  `json:"id"`
 	UserId   int64  `json:"userId"`
 	PostCode string `json:"postCode"`
 	Name     string `json:"name"`

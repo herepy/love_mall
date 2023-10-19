@@ -42,6 +42,7 @@ func (l *AddressListLogic) AddressList(userId int64) (resp *types.AddressListRes
 	resp = &types.AddressListResponse{}
 	for _, item := range list {
 		resp.List = append(resp.List, types.AddressItem{
+			Id:       item.Id,
 			UserId:   item.UserId,
 			PostCode: item.PostCode,
 			Phone:    item.Phone,
