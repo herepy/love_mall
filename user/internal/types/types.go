@@ -24,6 +24,18 @@ type EditUserInfoRequest struct {
 	City     string `json:"city"`
 }
 
+type AddAddressRequest struct {
+	UserId   int64  `json:"-"`
+	PostCode string `json:"postCode"`
+	Name     string `json:"name"`
+	Phone    string `json:"phone"`
+	Province string `json:"province"`
+	City     string `json:"city"`
+	District string `json:"district"`
+	Address  string `json:"address"`
+	Default  bool   `json:"default"`
+}
+
 type SendCodeResponse struct {
 	Key string `json:"key"`
 }
