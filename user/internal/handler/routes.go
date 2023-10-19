@@ -53,6 +53,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/address/list",
 				Handler: AddressListHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/address/del",
+				Handler: DelAddressHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/user"),

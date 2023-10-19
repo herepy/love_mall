@@ -44,7 +44,12 @@ func AddAddress(address UserAddress) error {
 
 func AddressList(userId int64) ([]UserAddress, error) {
 	var addressList []UserAddress
-	err := db.Where("user_id = ?", userId).Find(&addressList).Error
+	err := db.Where("user_id = ? and status = ?", userId, StatusOk).Find(&addressList).Error
 
 	return addressList, err
+}
+
+func DelAddress(userId, id int64) error {
+	err := db.Model(&UserAddress{}).Where("user_id = ? and id = ?", userId, id).Update("status", StatusDel).Error
+	return err
 }

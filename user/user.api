@@ -35,6 +35,11 @@ type AddAddressRequest {
 	Default  bool   `json:"default"`
 }
 
+type DelAddressRequest {
+	UserId int64 `json:"-"`
+	Id 	   int64 `json:"id"`
+}
+
 type AddressItem {
 	UserId   int64  `json:"userId"`
 	PostCode string `json:"postCode"`
@@ -100,4 +105,7 @@ service user-api {
 
 	@handler AddressList
 	get /address/list returns (AddressListResponse)
+
+	@handler DelAddress
+	post /address/del (DelAddressRequest)
 }

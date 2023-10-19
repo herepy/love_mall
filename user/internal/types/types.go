@@ -36,6 +36,11 @@ type AddAddressRequest struct {
 	Default  bool   `json:"default"`
 }
 
+type DelAddressRequest struct {
+	UserId int64 `json:"-"`
+	Id     int64 `json:"id"`
+}
+
 type AddressItem struct {
 	UserId   int64  `json:"userId"`
 	PostCode string `json:"postCode"`
