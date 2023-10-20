@@ -25,4 +25,10 @@ type Config struct {
 		Pass string `json:",optional"`
 		Tls  bool   `json:",optional"`
 	}
+	Oss struct {
+		Key      string `json:"key"`
+		Secret   string `json:"secret"`
+		Endpoint string `json:"endpoint"`
+		Bucket   string `json:"bucket"`
+	}
 }

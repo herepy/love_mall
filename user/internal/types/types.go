@@ -76,3 +76,7 @@ type UserInfoResponse struct {
 	Province string `json:"province"`
 	City     string `json:"city"`
 }
+
+type UploadImgResponse struct {
+	Url string `json:"url"`
+}
